@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  reverse-proxy:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend
+
+  backend:
+    image: tiangolo/uvicorn-gunicorn-fastapi:python3.11-slim
+    volumes:
+      - ./example-backend:/app
+    environment:
+      MODULE_NAME: example_backend.main
+      PORT: 8001
+    ports:
+      - "8001:8001"

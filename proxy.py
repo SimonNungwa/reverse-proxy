@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import httpx
 
 app = Flask(__name__)
@@ -7,7 +7,7 @@ app = Flask(__name__)
 # TODO: replace code stub and implement proxy logic
 @app.route("/")
 def helloWorld():
-    return "<p>Hello world</p>"
+    return render_template('index.html')
 
 class handleRequest:
     pass
